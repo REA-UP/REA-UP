@@ -1,0 +1,1068 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>San Valentín REA 💖</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,800;1,900&display=swap" rel="stylesheet">
+
+
+<style>
+:root{
+  --vino:#500b0b;
+  --coral:#500b0b;
+  --rosa:#ff9ad5;
+  --rojo:#500b0b;
+  --gold:#ffb703;
+  --btn:#b69f83;
+}
+
+@font-face{
+  font-family:'Shelley Script';
+  src:url('fonts/ShelleyScript.ttf') format('truetype');
+  font-weight:normal;
+  font-style:normal;
+}
+
+*{box-sizing:border-box;}
+body{
+  margin:0;
+  min-height:100vh;
+  background:#ddd6C8;
+  font-family:'Poppins',system-ui,sans-serif;
+  overflow:hidden;
+  color:white;
+}
+
+
+/* ================= EFECTOS ================= */
+.floating-hearts,.names{
+  position:fixed; inset:0; pointer-events:none; z-index:1;
+}
+.heart{
+  position:absolute; bottom:-60px;
+  opacity:.85;
+  animation:floatUp linear forwards;
+}
+@keyframes floatUp{
+  0%{transform:translateY(0) scale(.9);opacity:0;}
+  15%{opacity:.9;}
+  100%{transform:translateY(-140vh) scale(2);opacity:0;}
+}
+.name{
+  position:absolute; bottom:-50px;
+  font-size:22px; font-weight:700;
+  color:var(--coral);
+  text-shadow:0 12px 30px rgba(184,50,44,.55);
+  animation:nameUp 11s ease forwards;
+}
+@keyframes nameUp{
+  0%{opacity:0;}
+  15%{opacity:1;}
+  100%{opacity:0;transform:translateY(-140vh);}
+}
+
+/* ================= PÁGINAS ================= */
+.page{
+  position:fixed; inset:0;
+  display:none;
+  z-index:2;
+}
+.page.active{display:flex;}
+.page.hidden{display:none!important;}
+
+/* ===== MARCO SOLO BORDE – 100% TRANSPARENTE ===== */
+.welcome-frame{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:26px;
+
+  padding:36px 48px;
+  border-radius:32px;
+
+  /* FORZAR TRANSPARENCIA TOTAL */
+  background-color:transparent !important;
+  background:none !important;
+  backdrop-filter:none !important;
+
+  /* MARCO */
+  border:2px solid rgba(80,11,11,.55);
+
+}
+
+/* ================= PAGE 1 ================= */
+.page1{
+  display:grid;
+  grid-template-columns:1.2fr .8fr;
+}
+.image-side{display:flex;justify-content:center;align-items:center;}
+.image-side img{
+  width:95%;
+  max-width:1000px;
+  border-radius:40px;
+  box-shadow:
+    0 80px 180px rgba(184,50,44,.7),
+    0 0 150px rgba(237,129,109,.65);
+}
+.text-side{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  gap:30px;
+  padding:60px;
+}
+
+/* TÍTULO - 15% más pequeño */
+.title{
+  font-family:'Cormorant Garamond',serif;
+  font-weight:700;
+  font-style:normal;
+  letter-spacing:4px;
+  text-transform:uppercase;
+  font-size:clamp(26px,2.8vw,44px);
+  text-align:center;
+  color:#500b0b;
+  text-shadow:
+    0 4px 12px rgba(80,11,11,.35),
+    0 0 30px rgba(255,255,255,.25);
+}
+
+.title span{
+  display:inline-block;
+  animation:beat 1.5s infinite ease-in-out;
+}
+@keyframes beat{
+  0%,100%{transform:scale(1);}
+  40%{transform:scale(1.08);}
+}
+
+.nick-box input{
+  padding:16px 26px;
+  border-radius:999px;
+  border:none;
+  outline:none;
+
+  background:#ffffff;
+  color:#500b0b;
+
+  font-size:16px;
+  text-align:center;
+  letter-spacing:.5px;
+
+  /* brillo vino suave */
+  box-shadow:
+    0 8px 22px rgba(0,0,0,.15),
+    0 0 0 1px rgba(80,11,11,.25);
+
+  transition:all .35s ease;
+}
+
+@keyframes wineInputGlow{
+  0%,100%{
+    box-shadow:
+      0 8px 22px rgba(0,0,0,.15),
+      0 0 0 1px rgba(80,11,11,.25);
+  }
+  50%{
+    box-shadow:
+      0 10px 28px rgba(80,11,11,.25),
+      0 0 0 2px rgba(80,11,11,.45);
+  }
+}
+
+.nick-box input{
+  animation:wineInputGlow 4s ease-in-out infinite;
+}
+
+.nick-box input::placeholder{
+  color:rgba(80,11,11,.45);
+  letter-spacing:.5px;
+}
+
+.nick-box input:focus{
+  box-shadow:
+    0 12px 30px rgba(80,11,11,.25),
+    0 0 0 2px rgba(80,11,11,.45);
+}
+
+
+@keyframes wineGlow{
+  0%,100%{
+    text-shadow:
+      0 0 6px rgba(80,11,11,.4),
+      0 0 14px rgba(80,11,11,.3);
+  }
+  50%{
+    text-shadow:
+      0 0 12px rgba(80,11,11,.7),
+      0 0 26px rgba(80,11,11,.5);
+  }
+}
+
+.btn-start{
+  animation:wineGlow 3s ease-in-out infinite;
+}
+
+/* ===== BOTÓN INICIAR – AESTHETIC ===== */
+.btn-start{
+  background:#B49F86;
+  color:#500b0b;
+  padding:26px 90px;
+  border-radius:999px;
+  border:none;
+  cursor:pointer;
+  font-size:18px;
+  letter-spacing:1px;
+
+  /* brillo vino en el texto */
+  text-shadow:
+    0 0 6px rgba(80,11,11,.45),
+    0 0 14px rgba(80,11,11,.35);
+
+  /* sensación premium */
+  box-shadow:
+    0 10px 30px rgba(0,0,0,.18),
+    0 0 0 1px rgba(255,255,255,.9);
+
+  transition:all .35s ease;
+}
+.btn-start:hover{
+  transform:translateY(-3px);
+  box-shadow:
+    0 18px 45px rgba(0,0,0,.25),
+    0 0 0 1px rgba(80,11,11,.25);
+
+  text-shadow:
+    0 0 10px rgba(80,11,11,.65),
+    0 0 22px rgba(80,11,11,.45);
+}
+
+.video-frame{
+  width:95%;
+  max-width:1000px;
+  border-radius:40px;
+  overflow:hidden;
+  position:relative;
+
+  /* ILUMINACIÓN VINO */
+  box-shadow:
+    0 0 0 0.5px rgba(80,11,11,.6),     /* borde fino */
+    0 25px 70px rgba(80,11,11,.6),   /* sombra externa */
+    0 0 120px rgba(80,11,11,.45);    /* halo */
+
+  animation: dualHalo 5s ease-in-out infinite;
+}
+
+.hero-video{
+  width:100%;
+  height:100%;
+  display:block;
+  object-fit:cover;
+}
+
+.video-frame:hover{
+  box-shadow:
+    0 0 0 2px rgba(255,255,255,.8),
+    0 30px 90px rgba(255,255,255,.7),
+    0 0 160px rgba(255,255,255,.6);
+}
+
+/* ================= PAGE 2 ================= */
+.page2{
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  gap:22px;
+  text-align:center;
+  position:relative;
+}
+.page2 h1{
+  font-family:'Playfair Display',serif;
+  font-style:italic;
+  font-weight:900;
+  font-size:clamp(70px,6vw,92px);
+  color:var(--coral);
+}
+
+.desc{
+  max-width:620px;
+  font-style:italic;
+  color:#ffb4a2;
+  transform:translateY(-15%);
+}
+
+.puzzle{
+  width:420px;
+  height:420px;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:2px;
+  transform:translateY(-15%);
+  position:relative;
+}
+.piece{
+  width:140px;
+  height:140px;
+  background-image:url("https://i.imgur.com/1nxVGLp.jpg");
+  background-size:420px 420px;
+  cursor:pointer;
+}
+
+.final{
+  font-family:'Playfair Display',serif;
+  font-style:italic;
+  font-size:38px;
+  color:var(--rosa);
+  opacity:0;
+  transform:translateX(-80px);
+  transition:1.2s;
+}
+.final.show{opacity:1;transform:translateX(0);}
+
+.next-btn{
+  position:fixed;
+  bottom:30px;
+  right:30px;
+  display:none;
+  padding:18px 36px;
+  border-radius:999px;
+  border:none;
+  cursor:pointer;
+   color:white;
+    background:#ffffff;
+  color:#500b0b;
+  
+    /* brillo vino en el texto */
+  text-shadow:
+    0 0 6px rgba(80,11,11,.45),
+    0 0 14px rgba(80,11,11,.35);
+
+  /* sensación premium */
+  box-shadow:
+    0 10px 30px rgba(0,0,0,.18),
+    0 0 0 1px rgba(255,255,255,.9);
+
+  transition:all .35s ease;
+
+  z-index:5;
+}
+
+/* ===== FLOTANTE PAGE 2 (OK) ===== */
+.puzzle-float{
+  position:fixed;
+  inset:0;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:rgba(0,0,0,.55);
+  z-index:9;
+}
+.float-box{
+  background:linear-gradient(180deg,#FFF);
+  border-radius:28px;
+  padding:28px 36px;
+  text-align:center;
+  box-shadow:0 0 60px rgba(255,154,213,.55);
+}
+.float-box p{
+  font-family:'Shelley Script', cursive;
+  font-size:32px;
+  font-weight:normal;
+  color:#461614;
+  margin-bottom:24px;
+  text-shadow:
+    0 0 10px rgba(255,255,255,.45),
+    0 0 22px rgba(80,11,11,.35);
+}
+
+.float-box button{
+  background:#B49F86;
+  color:#500b0b;
+  padding:14px 40px;
+  border-radius:999px;
+  border:none;
+  cursor:pointer;
+  font-size:16px;
+  letter-spacing:1px;
+
+  /* brillo vino del texto */
+  text-shadow:
+    0 0 6px rgba(80,11,11,.45),
+    0 0 14px rgba(80,11,11,.35);
+
+  /* sombra aesthetic */
+  box-shadow:
+    0 10px 30px rgba(0,0,0,.18),
+    0 0 0 1px rgba(255,255,255,.9);
+
+  transition:all .35s ease;
+}
+
+.float-box button:hover{
+  transform:translateY(-3px);
+  box-shadow:
+    0 18px 45px rgba(0,0,0,.25),
+    0 0 0 1px rgba(80,11,11,.25);
+
+  text-shadow:
+    0 0 10px rgba(80,11,11,.65),
+    0 0 22px rgba(80,11,11,.45);
+}
+
+
+/* ===== OVERLAY FINAL SOBRE PUZZLE ===== */
+.puzzle-finish{
+  position:absolute;
+  inset:0;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  pointer-events:none;
+  opacity:0;
+  transform:translateY(40px);
+  transition:1.2s ease;
+}
+.puzzle-finish.show{
+  opacity:1;
+  transform:translateY(0);
+}
+.puzzle-finish span{
+  font-family:'Playfair Display',serif;
+  font-style:italic;
+  font-size:42px;
+  color:#ddd6c8;
+  text-shadow:
+    0 0 18px rgba(255,154,213,.9),
+    0 0 40px rgba(255,255,255,.8);
+}
+.puzzle-finish span::after{
+  content:" ";
+  animation:sparkle 1.6s infinite alternate;
+}
+@keyframes sparkle{
+  from{opacity:.4;}
+  to{opacity:1;}
+}
+/* ===== LOGOS CIRCULARES PUZZLE ===== */
+.puzzle-logo{
+  width:120px;
+  height:120px;
+  border-radius:50%;
+  background:#ffffff;
+  padding:18px;
+  object-fit:contain;
+
+  /* iluminación vino */
+  box-shadow:
+    0 0 0 2px rgba(80,11,11,.45),
+    0 18px 40px rgba(80,11,11,.45),
+    0 0 90px rgba(80,11,11,.35);
+}
+/* ================= PAGE 3 ================= */
+.page3{justify-content:center;align-items:center;}
+.form-shell{
+  width:min(980px,92vw);
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:28px;
+  align-items:center;
+}
+.form-card{
+  background:rgba(255,255,255,.06);
+  border-radius:28px;
+  padding:34px;
+  backdrop-filter: blur(10px);
+  border:1px solid rgba(255,255,255,.14);
+  box-shadow:0 30px 80px rgba(0,0,0,.35);
+}
+.form-title{
+  font-family:'Playfair Display',serif;
+  font-style:italic;
+  font-size:36px;
+  color:var(--coral);
+  margin:0 0 18px;
+}
+.grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:16px 18px;
+}
+.field{display:flex;flex-direction:column;gap:8px;text-align:left;}
+.field label{font-size:13px;color:#461614;letter-spacing:1px;}
+.field input,.field textarea{
+  padding:14px 16px;
+  border-radius:16px;
+  border:1px solid rgba(255,255,255,.18);
+  background:rgba(0,0,0,.18);
+  color:white;
+  outline:none;
+}
+@keyframes fadeUp{
+  0%{
+    opacity:0;
+    transform:translateY(20px);
+  }
+  100%{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+@keyframes softPulse{
+  0%,100%{
+    transform:scale(1);
+  }
+  50%{
+    transform:scale(1.04);
+  }
+}
+
+.field textarea{
+  padding:14px 16px;
+  border-radius:16px;
+  border:1px solid rgba(80,11,11,.25);
+
+  background:#ffffff;
+  color:#000000; /* TEXTO NEGRO */
+
+  outline:none;
+}
+
+.actions{margin-top:18px;}
+.btn-register{
+  padding:16px 34px;
+  border-radius:999px;
+  border:none;
+  cursor:pointer;
+  color:white;
+  background:linear-gradient(185deg,#b69f83);
+  box-shadow:0 0 24px rgba(90,71,49,.65);
+}
+
+.btn-register:disabled{opacity:.6;cursor:not-allowed;}
+
+.side-logos{display:flex;flex-direction:column;gap:18px;align-items:center;}
+.side-logos img{
+  width:120px;height:120px;border-radius:50%;
+  background:#fff;padding:18px;object-fit:contain;
+  box-shadow:0 20px 60px rgba(0,0,0,.35);
+}
+
+/* ================= PAGE 4 ================= */
+.page4{justify-content:center;align-items:center;flex-direction:column;}
+#pixelHeart{display:grid;grid-template-columns:repeat(27,24px);gap:6px;}
+.pixel{
+  width:24px;
+  height:24px;
+  background:var(--rojo);
+  opacity:0;
+}
+
+.page4 p{
+  margin-top:36px;
+  font-family:'Playfair Display',serif;
+  font-style:italic;
+  font-size:34px;
+  color:#500b0b;
+  opacity:0;
+  transition:1.2s ease;
+  text-shadow:0 0 22px rgba(255,154,213,.9);
+}
+.page4 p.show{opacity:1;}
+
+/* ================= MODAL (Cargando/AVISO) ================= */
+#modal{
+  position:fixed; inset:0;
+  background:rgba(0,0,0,.85);
+  display:none;
+  justify-content:center;
+  align-items:center;
+  z-index:20;
+}
+#modal .box{
+  background:#ddd6c8;
+  border-radius:42px;
+  padding:54px;
+  max-width:680px;
+  width:92%;
+  text-align:center;
+
+  box-shadow:
+    0 20px 60px rgba(0,0,0,.25),
+    0 0 120px rgba(80,11,11,.25);
+}
+
+#modal h2{
+  font-family:'Shelley Script', cursive;
+  font-size:38px;
+  color:#500b0b;
+  margin:0 0 18px;
+}
+
+#modal p{
+  margin:0 0 18px;
+  line-height:1.6;
+  color:#500b0b;
+  font-size:18px;
+  animation:fadeUp 1s ease forwards;
+}
+
+#modal .feliz{
+  display:block;
+  margin-top:18px;
+
+  font-size:30px;
+  font-weight:700;
+  color:#500b0b;
+
+  animation:
+    fadeUp 1.2s ease forwards,
+    softPulse 2.5s ease-in-out infinite;
+}
+
+
+#modal .comment{
+  color:#ff9ad5;
+  text-shadow:0 0 18px rgba(255,154,213,.9);
+}
+#modal button{
+  background:#ffffff;
+  color:#500b0b;
+
+  padding:18px 54px;
+  border-radius:999px;
+  border:none;
+  cursor:pointer;
+
+  font-size:16px;
+  letter-spacing:1px;
+
+  text-shadow:
+    0 0 6px rgba(80,11,11,.45),
+    0 0 14px rgba(80,11,11,.35);
+
+  box-shadow:
+    0 10px 30px rgba(0,0,0,.18),
+    0 0 0 1px rgba(255,255,255,.9);
+
+  transition:all .35s ease;
+}
+#modal button:hover{
+  transform:translateY(-3px);
+  box-shadow:
+    0 18px 45px rgba(0,0,0,.25),
+    0 0 0 1px rgba(80,11,11,.25);
+
+  text-shadow:
+    0 0 10px rgba(80,11,11,.65),
+    0 0 22px rgba(80,11,11,.45);
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="floating-hearts"></div>
+<div class="names"></div>
+
+<!-- PAGE 1 -->
+<section class="page page1 active" id="page1">
+  <div class="image-side">
+  <div class="video-frame">
+    <video class="hero-video" autoplay muted loop playsinline>
+      <source src="https://imgur.com/6vLilxw.mp4" type="video/mp4">
+    </video>
+  </div>
+</div>
+</div>
+  <div class="text-side">
+<div class="welcome-frame">
+  <div class="title" id="title"></div>
+
+  <div class="nick-box">
+    <input id="nickname" placeholder="Ingresa tu Nombre 💖">
+  </div>
+
+  <button class="btn-start" id="startBtn">
+    INICIAR
+  </button>
+</div>
+
+  </div>
+</section>
+
+<!-- PAGE 2 -->
+<section class="page page2" id="page2">
+  <h1 id="welcome"></h1>
+
+  <!-- Flotante OK -->
+  <div class="puzzle-float" id="puzzleFloat">
+    <div class="float-box">
+      <p>Mueva las piezas para </p>
+      <p>completar el rompecabezas </p>
+      <button id="floatOk">OK</button>
+    </div>
+  </div>
+
+ 
+<div style="display:flex;align-items:center;justify-content:center;gap:40px;">
+  <img src="https://i.imgur.com/MnddU6A.png" class="puzzle-logo" alt="Logo izquierdo">
+  
+  <div class="puzzle" id="puzzle"></div>
+  
+  <img src="https://i.imgur.com/yLX1Lg3.png" class="puzzle-logo" alt="Logo derecho">
+</div>
+
+  <div class="final" id="finalText">Feliz Día de San Valentín 💖</div>
+</section>
+
+<button class="next-btn" id="nextBtn"></button>
+
+<!-- PAGE 3 -->
+<section class="page page3" id="page3">
+  <div class="form-shell">
+    <div class="form-card">
+      <h2 class="form-title">INGRESE SUS DATOS:</h2>
+
+      <form id="regForm" autocomplete="off">
+        <div class="grid">
+          <div class="field">
+            <label for="nombre">IG</label>
+            <input id="nombre" required>
+          </div>
+          <div class="field">
+            <label for="cancion">CANCIÓN FAVORITA</label>
+            <input id="cancion" required>
+          </div>
+          <div class="field" style="grid-column:1/-1;">
+            <label for="trago">TRAGO FAVORITO</label>
+            <input id="trago" required>
+          </div>
+          <div class="field" style="grid-column:1/-1;">
+            <label for="comentario">COMENTARIO POR ESTE SAN VALENTÍN</label>
+            <textarea id="comentario" rows="3" required></textarea>
+          </div>
+        </div>
+
+        <div class="actions">
+          <button class="btn-register" id="registerBtn" type="submit">REGISTRAR</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="side-logos">
+      <img src="https://i.imgur.com/MnddU6A.png" alt="">
+      <img src="https://i.imgur.com/yLX1Lg3.png" alt="">
+    </div>
+  </div>
+</section>
+
+<!-- PAGE 4 -->
+<section class="page page4" id="page4">
+  <div id="pixelHeart"></div>
+  <p id="thanksMsg"></p>
+</section>
+
+<!-- MODAL -->
+<div id="modal">
+  <div class="box">
+    <h2 id="modalTitle">Cargando...</h2>
+    <div id="modalBody"></div>
+    <button id="modalBtn" style="display:none;">FINALIZAR</button>
+  </div>
+</div>
+
+<script>
+/* ================= CONFIG ================= */
+const SHEET_URL="https://script.google.com/macros/s/AKfycbx55y33UlfjZkYt13lXNlwns2wIX4rjS6OMKKHGJJJnuUAsdeu_vHK35I1cG1kuLQ/exec";
+
+/* ================= TÍTULO ================= */
+const title=document.getElementById("title");
+["BIENVENIDOS A","NUESTRO","SAN VALENTIN","REA"].forEach(t=>{
+  const d=document.createElement("div");
+  [...t].forEach(c=>{
+    const s=document.createElement("span");
+    s.textContent=c===" "?"\u00A0":c;
+    d.appendChild(s);
+  });
+  title.appendChild(d);
+});
+
+/* ================= EFECTOS: CORAZONES ================= */
+const hearts=document.querySelector(".floating-hearts");
+setInterval(()=>{
+  const h=document.createElement("span");
+  h.className="heart";
+  h.textContent=Math.random()>.5?"♥":"♡";
+  h.style.left=Math.random()*100+"vw";
+  h.style.fontSize=(Math.random()*30+24)+"px";
+h.style.color="var(--vino)";
+
+  const d=Math.random()*12+10;
+  h.style.animationDuration=d+"s";
+  hearts.appendChild(h);
+  setTimeout(()=>h.remove(),d*1000);
+},260);
+
+/* ================= EFECTOS: NOMBRES ================= */
+const namesLayer=document.querySelector(".names");
+const namesList=["Nico","Andre","Ari","Alexa","Tipis","Erni","Adri","Mimy","Claudia","Dani","Mara","Regi"];
+let ni=0;
+setInterval(()=>{
+  const n=document.createElement("div");
+  n.className="name";
+  n.textContent=namesList[ni];
+  n.style.left=Math.random()*80+10+"vw";
+  namesLayer.appendChild(n);
+  setTimeout(()=>n.remove(),11000);
+  ni=(ni+1)%namesList.length;
+},900);
+
+/* ================= NAVEGACIÓN ================= */
+const page1=document.getElementById("page1");
+const page2=document.getElementById("page2");
+const page3=document.getElementById("page3");
+const page4=document.getElementById("page4");
+const nextBtn=document.getElementById("nextBtn");
+const puzzleFloat=document.getElementById("puzzleFloat");
+
+let nickGlobal="";
+let puzzleDone=false;
+
+document.getElementById("floatOk").onclick=()=>{
+  puzzleFloat.style.display="none";
+};
+
+startBtn.onclick=()=>{
+  nickGlobal=nickname.value.trim();
+  if(!nickGlobal) return alert("Ingresa tu nick");
+
+  page1.classList.add("hidden");
+  page2.classList.add("active");
+
+  welcome.textContent="Bienvenido "+nickGlobal;
+
+  nextBtn.textContent="Siguiente "+nickGlobal;
+  nextBtn.style.display="none";
+
+  // reset flotante cada vez que entran a page2
+  puzzleFloat.style.display="flex";
+  puzzleDone=false;
+
+  iniciarPuzzle();
+};
+
+/* P2 → P3 */
+nextBtn.onclick=()=>{
+  if(!puzzleDone) return;
+  nextBtn.style.display="none";
+  page2.classList.remove("active");
+  page3.classList.add("active");
+};
+
+/* ================= PUZZLE ================= */
+function iniciarPuzzle(){
+  const puzzle=document.getElementById("puzzle");
+  puzzle.innerHTML="";
+
+  // evita overlays duplicados
+  const oldOverlay = puzzle.querySelector(".puzzle-finish");
+  if(oldOverlay) oldOverlay.remove();
+
+  let order=[...Array(9).keys()].sort(()=>Math.random()-0.5);
+  let sel=null;
+
+  order.forEach((o,i)=>{
+    const d=document.createElement("div");
+    d.className="piece";
+    d.dataset.correct=i;
+    d.style.backgroundPosition=`${-(i%3)*140}px ${-Math.floor(i/3)*140}px`;
+    d.style.order=o;
+    puzzle.appendChild(d);
+  });
+
+  puzzle.onclick=e=>{
+    if(!e.target.classList.contains("piece")) return;
+
+    if(!sel){
+      sel=e.target;
+      sel.style.outline="3px solid pink";
+      return;
+    }
+
+    [sel.style.order, e.target.style.order] = [e.target.style.order, sel.style.order];
+    sel.style.outline="none";
+    sel=null;
+
+    const ok=[...puzzle.children].every(p=>p.classList.contains("piece") ? (p.style.order==p.dataset.correct) : true);
+    if(ok){
+      puzzleDone=true;
+
+      // overlay “Feliz San Valentín ” sobre el puzzle
+      const overlay=document.createElement("div");
+      overlay.className="puzzle-finish";
+      overlay.innerHTML="<span>Feliz San Valentín</span>";
+      puzzle.appendChild(overlay);
+      setTimeout(()=>overlay.classList.add("show"),100);
+
+      // luego sigue el flujo normal
+      setTimeout(()=>{ nextBtn.style.display="block"; },1600);
+    }
+  };
+}
+
+/* ================= REGISTRO (UNA SOLA VEZ) ================= */
+let alreadySent=false;
+
+const modal=document.getElementById("modal");
+const modalTitle=document.getElementById("modalTitle");
+const modalBody=document.getElementById("modalBody");
+const modalBtn=document.getElementById("modalBtn");
+const registerBtn=document.getElementById("registerBtn");
+
+regForm.onsubmit=async (e)=>{
+  e.preventDefault();
+  if(alreadySent) return;
+  alreadySent=true;
+  registerBtn.disabled=true;
+
+  // Modal: Cargando...
+  modal.style.display="flex";
+  modalTitle.textContent="Cargando...";
+  modalBody.innerHTML="<p>Guardando tu registro en el equipo REA...</p>";
+  modalBtn.style.display="none";
+
+  const payload={
+    nick:nickGlobal,
+    nombre:document.getElementById("nombre").value.trim(),
+    cancion:document.getElementById("cancion").value.trim(),
+    trago:document.getElementById("trago").value.trim(),
+    comentario:document.getElementById("comentario").value.trim()
+  };
+
+  try{
+    const res = await fetch(SHEET_URL, { method:"POST", body: JSON.stringify(payload) });
+    const data = await res.json();
+
+    if(!data || data.status!=="ok"){
+      alreadySent=false;
+      registerBtn.disabled=false;
+      modalTitle.textContent="Error";
+      modalBody.innerHTML="<p>No se pudo registrar. Reintenta.</p>";
+      return;
+    }
+
+    // Modal: AVISO REA
+ modalTitle.textContent="MENSAJE";
+modalBody.innerHTML=`
+  <p>
+    el TIO REA te desea un lindo San Valentin, agradecemos siempre tu apoyo por la orga y queremos que el amor y la amistad siempre estén en ti💙
+    <span class="feliz">¡Feliz San Valentín!</span>
+  </p>
+`;
+
+
+    modalBtn.style.display="inline-block";
+  }catch(err){
+    alreadySent=false;
+    registerBtn.disabled=false;
+    modalTitle.textContent="Error";
+    modalBody.innerHTML="<p>Error de conexión. Reintenta.</p>";
+  }
+};
+modalTitle.textContent="Cargando…";
+modalBody.innerHTML="<p>Procesando tu información</p>";
+
+
+/* ================= FINALIZAR → PAGE 4 ================= */
+modalBtn.onclick=()=>{
+  modal.style.display="none";
+  page3.classList.remove("active");
+  page4.classList.add("active");
+  construirCorazonFinal();
+};
+
+function construirCorazonFinal(){
+  const heart=[
+    "000001111000000000111100000",
+    "000111111110000011111111000",
+    "001111111111100111111111100",
+    "011111111111111111111111110",
+    "111111111111111111111111111",
+    "111111111111111111111111111",
+    "011111111111111111111111110",
+    "001111111111111111111111100",
+    "000111111111111111111111000",
+    "000011111111111111111110000",
+    "000001111111111111111100000",
+    "000000111111111111111000000",
+    "000000011111111111110000000",
+    "000000001111111111100000000",
+    "000000000111111111000000000",
+    "000000000011111110000000000",
+    "000000000001111100000000000",
+    "000000000000111000000000000",
+    "000000000000010000000000000"
+  ];
+
+  const rea=[
+    "111101110111",
+    "100101000101",
+    "111101110111",
+    "101001000101",
+    "101001110101"
+  ];
+
+  const pixelHeart=document.getElementById("pixelHeart");
+  const thanksMsg=document.getElementById("thanksMsg");
+  thanksMsg.classList.remove("show");
+  thanksMsg.innerHTML="";
+
+  pixelHeart.innerHTML="";
+  let delay=0;
+  const cols=27;
+
+  heart.forEach(row=>{
+    row.split("").forEach(bit=>{
+      const d=document.createElement("div");
+      d.className="pixel";
+      pixelHeart.appendChild(d);
+      setTimeout(()=>{ if(bit==="1") d.style.opacity=1; }, delay*25);
+      delay++;
+    });
+  });
+
+  // poner REA dentro
+  setTimeout(()=>{
+    const sx=7, sy=6;
+    rea.forEach((row,y)=>{
+      row.split("").forEach((bit,x)=>{
+        if(bit==="1"){
+          const idx=(sy+y)*cols+(sx+x);
+          const px=pixelHeart.children[idx];
+          if(px){
+            px.style.background="#fff";
+            px.style.opacity=1;
+          }
+        }
+      });
+    });
+  }, delay*25);
+
+  // mensaje DESPUÉS de formar REA
+  setTimeout(()=>{
+    thanksMsg.innerHTML = `GRACIAS POR PARTICIPAR "${nickGlobal}" ♥`;
+    thanksMsg.classList.add("show");
+  }, delay*25 + 800);
+}
+</script>
+
+</body>
+</html>
+
